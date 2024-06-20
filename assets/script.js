@@ -1,21 +1,27 @@
 const addEmployee = document.getElementById('add-employees-btn')
 let employeeArr = []
+const firstName = document.getElementById('firstName')
+const lastName = document.getElementById('lastName')
+const salary = document.getElementById('salary')
 
 function createEmployee() {
-    const firstName = document.getElementById('firstName').value
-    const lastName = document.getElementById('lastName').value
-    const salary = document.getElementById('salary').value
     
     const employee = {
-        firstName: firstName,
-        lastName: lastName,
-        salary: parseFloat(salary)
+        firstName: firstName.value,
+        lastName: lastName.value,
+        salary: parseFloat(salary.value)
+    }
+    
+    if (isNaN(employee.salary)) {
+        employee.salary = 0
     }
 
     employeeArr.push(employee)
     // console.log(employeeArr)
     localStorage.setItem('employees', JSON.stringify(employeeArr));
-
+    firstName.value = ''
+    lastName.value = ''
+    salary.value = ''
     createTable(employeeArr)
     displayAvgSalary()
 }
@@ -64,11 +70,10 @@ function createTable() {
             newTableRow.append(lastNameCell);
 
             const salaryCell = document.createElement("td");
-            salaryCell.textContent = employee.salary.toLocaleString("en-US", {
-                // Format the salary as currency
-                style: "currency",
-                currency: "USD"
-            });
+            salaryCell.textContent = employee.salary.toLocaleString("en-US",{
+                style:"currency",
+                currency:"USD"
+              });
 
             newTableRow.append(salaryCell);
 

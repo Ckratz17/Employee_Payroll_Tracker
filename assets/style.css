@@ -115,6 +115,12 @@ button[disabled] {
   float: right;
 }
 
+#avg-salary {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
 
 @media (max-width: 690px) {
   .btn {
