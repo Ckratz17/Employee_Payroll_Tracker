@@ -46,8 +46,12 @@ h2 {
   padding: 30px 40px;
 }
 
+#employee-form {
+    margin-top: 20px;
+}
+
 .card-header::after {
-  content: " ";
+  
   display: block;
   width: 100%;
   background: #e7e9eb;
